@@ -1,5 +1,9 @@
 Kevin Loggbok
 =============
+24-09-10
+
+Mer slingor
+------------
 24-09-09
 
 Blev klar med if-satser började med slingor
