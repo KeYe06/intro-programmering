@@ -1,5 +1,9 @@
 Kevin Loggbok
 =============
+24-09-17
+
+Gjorde klart while slingor, började på slumptal
+------------
 24-09-10
 
 Mer slingor
