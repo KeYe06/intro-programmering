@@ -1,5 +1,9 @@
 Kevin Loggbok
 =============
+24-09-23
+
+Gjorde slumpspel. Fastnade lite, hann bara en uppgift
+------------
 24-09-17
 
 Gjorde klart while slingor, började på slumptal
