@@ -1,5 +1,9 @@
 Kevin Loggbok
 =============
+24-10-01
+
+Fortsatte och blev klar med slump spel. Gjorde alla extra uppgifter. 
+------------
 24-09-24
 
 Fortsatte med slumpspel. Lyckades göra D uppgiften där man kan sätta in pengar. Väldigt nöjd att jag inte fastnade på uppgiften och lyckades lösa den själv
