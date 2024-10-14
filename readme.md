@@ -1,5 +1,9 @@
 Kevin Loggbok
 =============
+24-10-14
+
+Arbetade med flödesdiagram.
+------------
 24-10-01
 
 Fortsatte och blev klar med slump spel. Gjorde alla extra uppgifter. 
