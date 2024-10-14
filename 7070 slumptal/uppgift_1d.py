@@ -9,7 +9,7 @@ print("Två lika - 5 kr")
 print("En sexa - 3 kr")
 print("Stege - 3 kr")
 while svar != "a":
-    svar = input("Välj spel (s), Sätt in pengar (i), eller avsluta (a):")
+    svar = input("Välj, spel (s), Sätt in pengar (i), eller avsluta (a):")
     if svar == "i":
         insattbelopp = int(input("Ange belopp att sätta in"))
         pengapung = pengapung + insattbelopp
