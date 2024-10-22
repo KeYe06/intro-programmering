@@ -1,8 +1,13 @@
 Kevin Loggbok
 =============
-24-10-21
-Lång genomgång, arbetade ganska kort på sista flödesdiagram uppgiften.
+24-10-22
+
+Mer flödescheman. Jag uppgraderade min sten sax påse kod.
 <img src="Flödesscheman.png">
+------------
+24-10-21
+
+Lång genomgång, arbetade ganska kort på sista flödesdiagram uppgiften.
 ------------
 24-10-14
 
