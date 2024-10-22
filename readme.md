@@ -1,5 +1,9 @@
 Kevin Loggbok
 =============
+24-10-21
+Lång genomgång, arbetade ganska kort på sista flödesdiagram uppgiften.
+<img src="Flödesscheman.png">
+------------
 24-10-14
 
 Arbetade med flödesdiagram.
