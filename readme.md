@@ -1,4 +1,8 @@
 Kevin Loggbok
+------------
+24-11-04
+
+Gjorde klart for-slingor med range. Började med for each-slingor
 =============
 24-10-22
 
