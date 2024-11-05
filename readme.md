@@ -1,9 +1,13 @@
 Kevin Loggbok
 ------------
+24-11-05
+
+Gjorde klar for each-slingor. Började med listor. Gjorde den svåra extra uppgiften på uppgift 1. Det blev stökigt med koden funkade ändå.
+------------
 24-11-04
 
 Gjorde klart for-slingor med range. Började med for each-slingor
-=============
+------------
 24-10-22
 
 Mer flödescheman. Jag uppgraderade min sten sax påse kod.
