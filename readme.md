@@ -1,5 +1,9 @@
 Kevin Loggbok
 ------------
+24-11-11
+Arbetade och blev klar med uppgift 3 på listor.
+
+------------
 24-11-05
 
 Gjorde klar for each-slingor. Började med listor. Gjorde den svåra extra uppgiften på uppgift 1. Det blev stökigt med koden funkade ändå.
