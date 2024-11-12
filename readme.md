@@ -1,8 +1,12 @@
 Kevin Loggbok
 ------------
-24-11-11
-Arbetade och blev klar med uppgift 3 på listor.
+24-11-12
 
+Arbetade vidare med listor. Gjorde 4a-c.
+------------
+24-11-11
+
+Arbetade och blev klar med uppgift 3 på listor.
 ------------
 24-11-05
 
