@@ -1,5 +1,9 @@
 Kevin Loggbok
 ------------
+24-11-18
+
+Mer listor
+------------
 24-11-12
 
 Arbetade vidare med listor. Gjorde 4a-c.
