@@ -1,4 +1,8 @@
 Kevin Loggbok
+-----------
+24-11-19
+
+Mer listor klart med 4d och 5a och började med 5b.
 ------------
 24-11-18
 
