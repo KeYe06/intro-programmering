@@ -1,5 +1,9 @@
 Kevin Loggbok
 -----------
+24-11-25
+
+Gick tillbaka till 4c och fixade koden.
+-----------
 24-11-19
 
 Mer listor klart med 4d och 5a och började med 5b.

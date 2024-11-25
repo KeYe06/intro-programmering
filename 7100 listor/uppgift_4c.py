@@ -7,8 +7,8 @@ steg = int(input("hur många steg"))
 for bokstav in ord:
     if bokstav in alfa:
         sak = alfa.index(bokstav)
-        if alfa.index(bokstav) > len(alfa) - steg and bokstav != "ö":
-            bokstav = alfa[0 + steg - (len(alfa) - (len(alfa) - steg))]
+        if sak > 28 - steg and bokstav != "ö":
+            bokstav = alfa[0 + steg - (28 - sak) - 1] 
             svar += bokstav
         elif bokstav == "ö":
             bokstav = alfa[0 + steg - 1]
