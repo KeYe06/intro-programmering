@@ -1,5 +1,9 @@
 Kevin Loggbok
 -----------
+24-11-26
+
+Gjorde klart uppgifter 5 och 6. Började på black jack
+-----------
 24-11-25
 
 Gick tillbaka till 4c och fixade koden.
