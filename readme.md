@@ -1,5 +1,9 @@
 Kevin Loggbok
 -----------
+24-12-02
+
+Arbetade mer med Black Jack
+-----------
 24-11-26
 
 Gjorde klart uppgifter 5 och 6. Började på black jack
