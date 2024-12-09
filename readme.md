@@ -1,5 +1,13 @@
 Kevin Loggbok
 -----------
+24-12-09
+
+Mer Black Jack
+-----------
+24-12-03
+
+Mer Black Jack
+-----------
 24-12-02
 
 Arbetade mer med Black Jack

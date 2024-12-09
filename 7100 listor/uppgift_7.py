@@ -40,14 +40,14 @@ while con != "n":
         cardcount = cardcount - 1
         print("Spelare: HIT")
         print("AI grumlar...")
-        if sum(adeck) <= 16:
+        if sum(adecksum) <= 16:
             card = random.randint(0,cardcount)
             adeck.append(deckx[card])
             deckx.pop(card)
             cardcount = cardcount - 1
             for i in adeck:
                 if i in adeckcheck:
-                    pop.adeckcheck(i)
+                    adeckcheck.pop[i]
                 if i == "Ace":
                     adecksum.append(1)
                     adeckcheck.append(1)
@@ -59,20 +59,20 @@ while con != "n":
                     adeckcheck.append(i)
             adeckscheck.extend(adecksum)
             print("AI: HIT")
-        elif sum(adeck) >= 16:
+        elif sum(adecksum) >= 16:
             print("AI: STAND")
         print("Ditt deck:", sdeck)
         svar = input("HIT ELLER STAND")
     while svar == "stand":
         print("AI grumlar...")
-        if sum(adeck) <= 16:
+        if sum(adecksum) <= 16:
             card = random.randint(0,cardcount)
             adeck.append(deckx[card]) 
             deckx.pop(card)
             cardcount = cardcount - 1
             for i in adeck:
                 if i in adeckcheck:
-                    pop.adeckcheck(i)
+                    adeckcheck.pop(i)
                 if i == "Ace":
                     adecksum.append(1)
                 elif i == "Queen" or i == "Jester" or i == "King":
@@ -82,7 +82,7 @@ while con != "n":
             adeckscheck.extend(adecksum)
             print("AI: HIT")
             svar = input("HIT ELLER STAND")
-        elif sum(adeck) >= 16:
+        elif sum(adecksum) >= 16:
             print("AI: STAND")
             for i in sdeck:
                 if i == "Ace":
@@ -99,15 +99,15 @@ while con != "n":
             print("AIs summa", sum(adeck))
             if sum(sdecksum) == 21:
                 print("Black Jack för spelare")
-            elif sum(adeck) == 21:
+            elif sum(adecksum) == 21:
                 print("Black Jack för AI")
-            elif sum(sdecksum) < sum(adeck) and sum(adeck) <= 21:
+            elif sum(sdecksum) < sum(adecksum) and sum(adecksum) <= 21:
                 print("AI vinner")
-            elif sum(adeck) < sum(sdecksum) and sum(sdecksum) <= 21:
+            elif sum(adecksum) < sum(sdecksum) and sum(sdecksum) <= 21:
                 print("Spelare segrar")
-            elif sum(sdecksum) > 21 and sum(adeck) < 21:
+            elif sum(sdecksum) > 21 and sum(adecksum) < 21:
                 print("AI vinner")
-            elif sum(adeck) > 21 and sum(sdecksum) < 21:
+            elif sum(adecksum) > 21 and sum(sdecksum) < 21:
                 print("Spelare vinner")
             else:
                 print("Lika")
