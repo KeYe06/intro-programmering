@@ -1,7 +1,7 @@
 import random
 #        0     1  2  3  4  5  6  7  8  9     10       11      12
 deck = ["Ace", 2, 3, 4, 5, 6, 7, 8, 9, 10, "Queen", "King", "Jester"]
-deckx = ["Ace", "Ace", "Ace", "Ace", 2, 3, 4, 5, 6, 7, 8, 9, 10, 2, 3, 4, 5, 6, 7, 8, 9, 10, 2, 3, 4, 5, 6, 7, 8, 9, 10, 2, 3, 4, 5, 6, 7, 8, 9, 10, "Queen", "King", "Jester" "Queen", "King", "Jester" "Queen", "King", "Jester" "Queen", "King", "Jester"]
+deckx = ["Ace", "Ace", "Ace", "Ace", 2, 3, 4, 5, 6, 7, 8, 9, 10, 2, 3, 4, 5, 6, 7, 8, 9, 10, 2, 3, 4, 5, 6, 7, 8, 9, 10, 2, 3, 4, 5, 6, 7, 8, 9, 10, "Queen", "King", "Jester", "Queen", "King", "Jester", "Queen", "King", "Jester", "Queen", "King", "Jester"]
 con = input("vill du spela black jack? j/n")
 card = 0
 cardcount = 49
@@ -47,7 +47,8 @@ while con != "n":
             cardcount = cardcount - 1
             for i in adeck:
                 if i in adeckcheck:
-                    adeckcheck.pop[i]
+                    dick = i
+                    adeckcheck.pop[dick]
                 if i == "Ace":
                     adecksum.append(1)
                     adeckcheck.append(1)
@@ -57,7 +58,7 @@ while con != "n":
                 else:
                     adecksum.append(i)
                     adeckcheck.append(i)
-            adeckscheck.extend(adecksum)
+            adeckcheck.extend(adecksum)
             print("AI: HIT")
         elif sum(adecksum) >= 16:
             print("AI: STAND")
@@ -72,7 +73,8 @@ while con != "n":
             cardcount = cardcount - 1
             for i in adeck:
                 if i in adeckcheck:
-                    adeckcheck.pop(i)
+                    dick = i
+                    adeckcheck.pop[dick]
                 if i == "Ace":
                     adecksum.append(1)
                 elif i == "Queen" or i == "Jester" or i == "King":
@@ -96,7 +98,7 @@ while con != "n":
                 sdecksum.append(1)
             print("Spelarens deck:", sdeck)
             print("Din summa:", sum(sdecksum))
-            print("AIs summa", sum(adeck))
+            print("AIs summa", sum(adecksum))
             if sum(sdecksum) == 21:
                 print("Black Jack för spelare")
             elif sum(adecksum) == 21:
