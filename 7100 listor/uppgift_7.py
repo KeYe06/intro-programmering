@@ -1,16 +1,13 @@
 import random
-#        0     1  2  3  4  5  6  7  8  9     10       11      12
-deck = ["Ace", 2, 3, 4, 5, 6, 7, 8, 9, 10, "Queen", "King", "Jester"]
-deckx = ["Ace", "Ace", "Ace", "Ace", 2, 3, 4, 5, 6, 7, 8, 9, 10, 2, 3, 4, 5, 6, 7, 8, 9, 10, 2, 3, 4, 5, 6, 7, 8, 9, 10, 2, 3, 4, 5, 6, 7, 8, 9, 10, "Queen", "King", "Jester", "Queen", "King", "Jester", "Queen", "King", "Jester", "Queen", "King", "Jester"]
-con = input("vill du spela black jack? j/n")
+deckx = ["Ace", "Ace", "Ace", "Ace", 2, 3, 4, 5, 6, 7, 8, 9, 10, 2, 3, 4, 5, 6, 7, 8, 9, 10, 2, 3, 4, 5, 6, 7, 8, 9, 10, 2, 3, 4, 5, 6, 7, 8, 9, 10, "Queen", "King", "Jack", "Queen", "King", "Jack", "Queen", "King", "Jack", "Queen", "King", "Jack"]
+con = input("Vill du spela black jack? j/n")
 card = 0
-cardcount = 49
+cardcount = 53
 while con != "n":
     sdeck = []
     sdecksum = []
     adeck = []
     adecksum = []
-    adeckcheck = []
     for i in range (2):
         card = random.randint(0,cardcount)
         sdeck.append(deckx[card])
@@ -22,15 +19,10 @@ while con != "n":
         deckx.pop(card)
         cardcount = cardcount - 1
     for i in adeck:
-        if i == "Ace":
-             adecksum.append(1)
-             adeckcheck.append(1)
-        elif i == "Queen" or i == "Jester" or i == "King":
+        if i == "Queen" or i == "Jack" or i == "King" or i == "Ace":
              adecksum.append(10)
-             adeckcheck.append(10)
         else:
              adecksum.append(i)
-             adeckcheck.append(i)
     print("Ditt deck:", sdeck)
     svar = input("HIT ELLER STAND")
     while svar != "stand":
@@ -45,26 +37,17 @@ while con != "n":
             adeck.append(deckx[card])
             deckx.pop(card)
             cardcount = cardcount - 1
-            for i in adeck:
-                if i in adeckcheck:
-                    dick = i
-                    adeckcheck.pop[dick]
-                if i == "Ace":
-                    adecksum.append(1)
-                    adeckcheck.append(1)
-                elif i == "Queen" or i == "Jester" or i == "King":
-                    adecksum.append(10)
-                    adeckcheck.append(10)
-                else:
-                    adecksum.append(i)
-                    adeckcheck.append(i)
-            adeckcheck.extend(adecksum)
+            if adeck[-1] == "Queen" or adeck[-1] == "King" or adeck[-1] == "Jack" or adeck[-1] == "Ace":
+                adecksum.append(10)
+            else:
+                adecksum.append(adeck[-1])
             print("AI: HIT")
         elif sum(adecksum) >= 16:
             print("AI: STAND")
         print("Ditt deck:", sdeck)
         svar = input("HIT ELLER STAND")
     while svar == "stand":
+        print("Spelare: STAND")
         print("AI grumlar...")
         if sum(adecksum) <= 16:
             card = random.randint(0,cardcount)
@@ -72,28 +55,23 @@ while con != "n":
             deckx.pop(card)
             cardcount = cardcount - 1
             for i in adeck:
-                if i in adeckcheck:
-                    dick = i
-                    adeckcheck.pop[dick]
-                if i == "Ace":
-                    adecksum.append(1)
-                elif i == "Queen" or i == "Jester" or i == "King":
+                if adeck[-1] == "Queen" or adeck[-1] == "King" or adeck[-1] == "Jack" or adeck[-1] == "Ace":
                     adecksum.append(10)
                 else:
-                    adecksum.append(i)
-            adeckscheck.extend(adecksum)
+                    adecksum.append(adeck[-1])
             print("AI: HIT")
             svar = input("HIT ELLER STAND")
         elif sum(adecksum) >= 16:
             print("AI: STAND")
             for i in sdeck:
-                if i == "Ace":
-                    sdecksum.append(1)
-                elif i == "Queen" or i == "Jester" or i == "King":
+                if i == "Queen" or i == "Jack" or i == "King" or i == "Ace":
                     sdecksum.append(10)
                 else:
                     sdecksum.append(i)
             if sum(sdecksum) > 21 and "Ace" in sdeck:
+                sdecksum.pop[10]
+                sdecksum.append(1)    
+            if sum(adecksum) > 21 and "Ace" in adeck:
                 sdecksum.pop[10]
                 sdecksum.append(1)
             print("Spelarens deck:", sdeck)
@@ -103,7 +81,7 @@ while con != "n":
                 print("Black Jack för spelare")
             elif sum(adecksum) == 21:
                 print("Black Jack för AI")
-            elif sum(sdecksum) < sum(adecksum) and sum(adecksum) <= 21:
+            if sum(sdecksum) < sum(adecksum) and sum(adecksum) <= 21:
                 print("AI vinner")
             elif sum(adecksum) < sum(sdecksum) and sum(sdecksum) <= 21:
                 print("Spelare segrar")
@@ -112,7 +90,8 @@ while con != "n":
             elif sum(adecksum) > 21 and sum(sdecksum) < 21:
                 print("Spelare vinner")
             else:
-                print("Lika")
+                print("AI vinner")
             con = input("Stick härifrån")
-
+if con == "n":
+    print("Stick härifrån")
 
