@@ -1,5 +1,13 @@
 Kevin Loggbok
 -----------
+24-12-16
+
+Klar med Black Jack
+-----------
+24-12-10
+
+Mer Black Jack. Fixade koden. Tog bort en korkad bit. Snart klart bara en liten sektion som behöver fixas.
+-----------
 24-12-09
 
 Mer Black Jack
