@@ -5,7 +5,7 @@ con = input("Vill du spela black jack? j/n")
 card = 0
 cardcount = 51
 while con != "n":
-    sdeck = ["Ace"]
+    sdeck = []
     sdecksum = []
     adeck = []
     adecksum = []
@@ -73,14 +73,17 @@ while con != "n":
                     sdecksum.append(10)
                 else:
                     sdecksum.append(i)
+            time.sleep(0.8)
             if sum(sdecksum) > 21 and "Ace" in sdeck:
                 final = sdeck.index("Ace")
                 sdecksum.pop(final)
                 sdecksum.append(1)    
+                print("Spelares Ace omvandlas till en etta!")
             if sum(adecksum) > 21 and "Ace" in adeck:
                 final = adeck.index("Ace")
-                sdecksum.pop(final)
-                sdecksum.append(1)
+                adecksum.pop(final)
+                adecksum.append(1)
+                print("AIs Ace omvandlas till en etta!")
             time.sleep(0.5)
             print("Spelarens deck:", sdeck)
             time.sleep(0.5)

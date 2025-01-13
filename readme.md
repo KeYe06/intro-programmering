@@ -1,4 +1,8 @@
 Kevin Loggbok
+----------
+25-01-13
+
+Började med funktioner. Black Jack bug fix.
 -----------
 24-12-16
 
