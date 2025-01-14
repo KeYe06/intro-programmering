@@ -101,9 +101,9 @@ while con != "n":
                 print("AI vinner")
             elif sum(adecksum) < sum(sdecksum) and sum(sdecksum) < 22:
                 print("Spelare segrar")
-            elif sum(sdecksum) > 21 and sum(adecksum) < 21:
+            elif sum(sdecksum) > 22 and sum(adecksum) < 22:
                 print("AI vinner")
-            elif sum(adecksum) > 21 and sum(sdecksum) < 21:
+            elif sum(adecksum) > 22 and sum(sdecksum) < 22:
                 print("Spelare vinner")
             else:
                 print("AI vinner")

@@ -1,4 +1,8 @@
-Kevin Loggbok
+Kevins Loggbok
+----------
+25-01-14
+
+Fortsatte med funktioner 4-7. Fixade en liten grej med Black Jack
 ----------
 25-01-13
 
