@@ -110,4 +110,3 @@ while con != "n":
             con = input("Stick härifrån")
 if con == "n":
     print("Stick härifrån")
-
