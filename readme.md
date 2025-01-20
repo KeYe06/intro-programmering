@@ -1,41 +1,45 @@
 Kevins Loggbok
-----------
+------------
+25-01-20
+
+Fortsatte med funktion 7. Kom inte så långt. Väldigt trött på Caesarchiffer.
+------------
 25-01-14
 
 Fortsatte med funktioner 4-7. Fixade en liten grej med Black Jack
-----------
+------------
 25-01-13
 
 Började med funktioner. Black Jack bug fix.
------------
+------------
 24-12-16
 
 Klar med Black Jack
------------
+------------
 24-12-10
 
 Mer Black Jack. Fixade koden. Tog bort en korkad bit. Snart klart bara en liten sektion som behöver fixas.
------------
+------------
 24-12-09
 
 Mer Black Jack
------------
+------------
 24-12-03
 
 Mer Black Jack
------------
+------------
 24-12-02
 
 Arbetade mer med Black Jack
------------
+------------
 24-11-26
 
 Gjorde klart uppgifter 5 och 6. Började på black jack
------------
+------------
 24-11-25
 
 Gick tillbaka till 4c och fixade koden.
------------
+------------
 24-11-19
 
 Mer listor klart med 4d och 5a och började med 5b.
@@ -104,7 +108,7 @@ Gjorde 7045 och 7050 uppgifterna
 24-08-27
 
 Laddade ner och arbetade med Python, räkning och variablar
--------------
+------------
 24-08-26
 
 Jag har skapat en loggbok
