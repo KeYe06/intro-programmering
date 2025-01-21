@@ -16,7 +16,7 @@ while svar != "n" and pengapung > 0:
             print("STOR Vinst + 50 kr!!")
          elif tal1 == 7 and tal2 == tal1 and tal3 == tal1:
             pengapung = pengapung + 50
-            print("JACKPOT 777 + 1000000 kr!!!!!!!!!!!!!!!!!!!!!!!")
+            print("JACKPOT 777 + 1000000 kr!")
             pengapung = pengapung + 1000000
          elif tal1 == tal2 or tal2 == tal3 or tal1 == tal3:
             print("Minivinst + 5 kr")
@@ -25,7 +25,7 @@ while svar != "n" and pengapung > 0:
             print("Sjuvinst + 2 kr")
             pengapung = pengapung + 2
          else:
-            print("FÖRLUST, SPELA IGEN! SPELA IGEN! SPELA IGEN! SPELA IGEN! SPELA IGEN!")
+            print("FÖRLUST, SPELA IGEN!")
 if svar == "n":
     print("Kom igen imorgon")
 if pengapung == 0:

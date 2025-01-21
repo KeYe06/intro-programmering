@@ -7,13 +7,24 @@ def caesark(ord):
         svar += bokstav
     return svar
 def caesard(ord):
-    svar = ""
+    svar =""
     for bokstav in ord:
         sak = alfa.index(bokstav)
         if sak - steg < 0:
             svar += alfa[len(alfa) - steg]
         else:
             svar += alfa[sak - steg]
+    con = input("Är ordet dekrypterat?" + svar)
+    while con != "ja":
+        ord = svar
+        svar = ""
+        for bokstav in ord:
+            sak = alfa.index(bokstav)
+            if sak - steg < 0:
+                svar += alfa[len(alfa) - steg]
+            else:
+                svar += alfa[sak - steg]
+        con = input("Är ordet dekrypterat?" + svar)
     return svar
 choice = input("Vill du dekryptera eller kryptera? d/k")
 steg = int(input("Hur många steg?"))
@@ -22,5 +33,4 @@ if choice == "k":
     print(caesark(ord))
 if choice == "d":
     print(caesard(ord))
-
-
+    

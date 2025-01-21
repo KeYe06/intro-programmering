@@ -1,5 +1,9 @@
 Kevins Loggbok
 ------------
+25-01-21
+
+Ändrade Black Jack lite. Drog ner antal kort i kortleken till 13 och gjorde så att man kan se en av dealerns hand. Gjorde också klart funktion 7.
+------------
 25-01-20
 
 Fortsatte med funktion 7. Kom inte så långt. Väldigt trött på Caesarchiffer.

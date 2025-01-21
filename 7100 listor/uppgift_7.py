@@ -1,10 +1,14 @@
 import random
 import time
-deckx = ["Ace", "Ace", "Ace", "Ace", 2, 3, 4, 5, 6, 7, 8, 9, 10, 2, 3, 4, 5, 6, 7, 8, 9, 10, 2, 3, 4, 5, 6, 7, 8, 9, 10, 2, 3, 4, 5, 6, 7, 8, 9, 10, "Queen", "King", "Jack", "Queen", "King", "Jack", "Queen", "King", "Jack", "Queen", "King", "Jack"]
+deckx = ["Ace", 2, 3, 4, 5, 6, 7, 8, 9, 10, "Queen", "King", "Jack",]
 con = input("Vill du spela black jack? j/n")
 card = 0
-cardcount = 51
+cardcount = 12
 while con != "n":
+    print("Det finns 13 kort i kortleken")
+    time.sleep(1.4)
+    print("Ett av varje")
+    time.sleep(1)
     sdeck = []
     sdecksum = []
     adeck = []
@@ -25,6 +29,10 @@ while con != "n":
         else:
              adecksum.append(i)
     print("Ditt deck:", sdeck)
+    time.sleep(1)
+    print("AI har", len(adeck), "kort")
+    print("AI har en/ett", adeck[0])
+    time.sleep(1)
     svar = input("HIT ELLER STAND")
     while svar != "stand":
         card = random.randint(0,cardcount)
@@ -49,6 +57,10 @@ while con != "n":
             print("AI: STAND")
         time.sleep(0.5)
         print("Ditt deck:", sdeck)
+        time.sleep(1)
+        print("AI har", len(adeck), "kort")
+        print("AI har en/ett", adeck[0])
+        time.sleep(1)
         svar = input("HIT ELLER STAND")
     while svar == "stand":
         print("Spelare: STAND")
@@ -65,6 +77,12 @@ while con != "n":
             else:
                 adecksum.append(adeck[-1])
             print("AI: HIT")
+            time.sleep(1)
+            print("Ditt deck:", sdeck)
+            time.sleep(1)
+            print("AI har", len(adeck), "kort")
+            print("AI har en/ett", adeck[0])
+            time.sleep(1)
             svar = input("HIT ELLER STAND")
         elif sum(adecksum) >= 16:
             print("AI: STAND")
