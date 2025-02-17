@@ -1,5 +1,9 @@
 Kevins Loggbok
 ------------
+25-02-17
+
+Började med Pygame. Gjorde 01 och började med 02. Lektioner mellan 01-21 och idag användes för att läsa på tuple och klasser.
+------------
 25-01-21
 
 Ändrade Black Jack lite. Drog ner antal kort i kortleken till 13 och gjorde så att man kan se en av dealerns hand. Gjorde också klart funktion 7.
