@@ -1,13 +1,8 @@
-"""
- Pygame base template for opening a window
- 
- Sample Python/Pygame Programs
- Simpson College Computer Science
- http://programarcadegames.com/
- http://simpson.edu/computer-science/
- 
- Explanation video: http://youtu.be/vRB_983kUMc
-"""
+'''
+Task
+
+lägg till två egna texter
+'''
  
 import pygame
  
@@ -27,9 +22,16 @@ pygame.display.set_caption("Show text")
 
 # Add visual elements to the game
 font = pygame.font.Font(None, 36)
+font2 = pygame.font.Font(None, 20)
 text = font.render('Hello, World!', True, BLACK, WHITE)
+text2 = font2.render('werwerwer', True, BLACK, GREEN)
+text3 = font2.render('3333333333', True, GREEN, WHITE)
 textRect = text.get_rect()
 textRect.center = (700 // 2, 500 // 2)
+textRect2 = text.get_rect()
+textRect2.center = (400, 200)
+textRect3 = text.get_rect()
+textRect3.center = (700 // 2, 400)
 # Loop until the user clicks the close button.
 done = False
  
@@ -55,6 +57,8 @@ while not done:
  
     # --- Drawing code should go here
     screen.blit(text, textRect)
+    screen.blit(text2, textRect2)
+    screen.blit(text3, textRect3)
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
  
