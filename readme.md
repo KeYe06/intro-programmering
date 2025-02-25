@@ -1,13 +1,17 @@
 Kevins Loggbok
-25-02-18
 ------------
+25-02-15
+
+Klar med 04. Började eget projekt.
+------------
+25-02-18
+
 
 Klar med 02 och 03 började med 04.
 ------------
 25-02-17
 
 Började med Pygame. Gjorde 01 och började med 02. Lektioner mellan 01-21 och idag användes för att läsa på tuple och klasser.
-
 ------------
 25-01-21
 

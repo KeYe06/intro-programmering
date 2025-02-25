@@ -46,9 +46,11 @@ cherries = []
 cherry_radius = (cherry_image.get_width() + cherry_image.get_height()) / 4
 
 font = pygame.font.Font(None, 32)
-text = font.render('0',True, BLACK, WHITE)
+text = font.render('score: 0',True, BLACK, WHITE)
 textRect = text.get_rect()
 textRect.center = (600 // 2, 50)
+
+score = 0
 
  
 # Loop until the user clicks the close button.
@@ -93,7 +95,7 @@ while not done:
         cherries.append([cherry_x, 0, 0])
     
     # move plums
-    score = 0
+    
     for plum in plums:
         # Move the plum down.
         plum[1] += plum[2]
@@ -108,6 +110,8 @@ while not done:
             plums.remove(plum)
             print("Yum!")
             score = score + 1
+            text = font.render('score: '+ str(score),True, BLACK, WHITE)
+
     for cherry in cherries:
         cherry[1] += cherry[2]
         cherry[2] += 0.2
@@ -117,7 +121,11 @@ while not done:
                 cherry[0], cherry[1], cherry_radius):
             cherries.remove(cherry)
             print("Ouch!")
-            score = score - 1
+            print("GAME OVER, Total score:", score)
+            done = True
+            text = font.render('ORMEN ÄR DÖD', True, BLACK, WHITE)
+
+            
         
 
         
@@ -132,17 +140,27 @@ while not done:
     screen.fill(GREEN)
  
     # --- Drawing code should go here
+
     screen.blit(snake_image, [snake_x, snake_y])
     for plum in plums:
         screen.blit(plum_image, [plum[0], plum[1]])
     for cherry in cherries:
         screen.blit(cherry_image, [cherry[0], cherry[1]])
     screen.blit(text, textRect)
+
  
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
  
     # --- Limit to 60 frames per second
     clock.tick(60)
+
+done = False
+
+while not done:
+    # --- Main event loop
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            done = True
  
 # Close the window and quit.
