@@ -1,5 +1,9 @@
 Kevins Loggbok
 ------------
+25-03-03
+
+Lade till plommon och körsbär i det egna projektet. idén är att man ska skjuta ner inkommande körsbär med plommon. Om körsbären tar sig genomm ormen så förlorar man.
+------------
 25-02-15
 
 Klar med 04. Började eget projekt.
