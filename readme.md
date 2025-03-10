@@ -1,4 +1,8 @@
 Kevins Loggbok
+25-03-10
+------------
+
+Fixade collisions.
 ------------
 25-03-04
 

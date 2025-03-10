@@ -36,8 +36,8 @@ cherry_radius = (cherry_image.get_width() + cherry_image.get_height()) / 4
 snake_x = 30
 snake_y = 700
 snake_last_direction = "right"
-plum_x = snake_x
-plum_y = snake_y
+plum_x = 0
+plum_y = 0
 
 font = pygame.font.Font(None, 32)
 text = font.render('Lives: 5',True, BLACK, WHITE)
@@ -62,14 +62,13 @@ while not done:
         plum_x = snake_x
         plum_y = snake_y
         plum_speed = 10
-        if snake_last_direction == "left":
-            plum_speed = -10
         plums.append([plum_x, plum_y, plum_speed]) # x, y, speed
 
     cherry_speed = -5
     if (random.randint(0, 100) < 2):
         cherry_y = random.randint(0, 800)
-        cherries.append([950, cherry_y, cherry_speed])
+        cherry_x = 950
+        cherries.append([cherry_x, cherry_y, cherry_speed])
 
     for plum in plums:
         # Move plum
@@ -82,8 +81,10 @@ while not done:
             lives = lives - 1
             text = font.render('Lives: '+ str(lives),True, BLACK, WHITE)
         cherry[0] += cherry[2]
-        if collides(plum_x, plum_y, plum_radius, cherry[0], cherry[1], cherry_radius):
-            cherries.remove(cherry)
+        for plum in plums:
+            if collides(plum[0], plum[1], plum_radius, cherry[0], cherry[1], cherry_radius):
+                cherries.remove(cherry)
+                break
 
     if lives == 0:
         done = True
