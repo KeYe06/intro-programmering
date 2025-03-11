@@ -33,19 +33,30 @@ cherry_image = pygame.image.load("pygame/cherries.png")
 cherries = []
 cherry_radius = (cherry_image.get_width() + cherry_image.get_height()) / 4
 
+ammo_image = pygame.image.load("pygame/ammo.png")
+ammo_radius = (ammo_image.get_width() + ammo_image.get_height()) / 4
+ammos = []
+
 snake_x = 30
 snake_y = 700
 snake_last_direction = "right"
 plum_x = 0
 plum_y = 0
 
-font = pygame.font.Font(None, 32)
+font = pygame.font.Font(None, 45)
 text = font.render('Lives: 5',True, BLACK, WHITE)
+text2 = font.render('Ammo: 10', True, BLACK, WHITE)
 textRect = text.get_rect()
 textRect.center = (1000 // 2, 50)
+textRect2 = text.get_rect()
+textRect2.center = (70, 770)
 
 done = False
 clock = pygame.time.Clock()
+
+time_to_shoot = 0
+reload = 0
+ammo = 8
 
 while not done:
     # --- Main event loop
@@ -58,22 +69,40 @@ while not done:
         snake_y -= 7
     if keys[pygame.K_DOWN]:
         snake_y += 7
-    if keys[pygame.K_SPACE]:
+    if keys[pygame.K_SPACE] and time_to_shoot <= 0 and reload <= 0:
         plum_x = snake_x
         plum_y = snake_y
-        plum_speed = 10
+        plum_speed = 18
         plums.append([plum_x, plum_y, plum_speed]) # x, y, speed
+        ammo = ammo - 1
+        text2 = font.render('Ammo: '+ str(ammo), True, BLACK, WHITE)
+        time_to_shoot = 0.18 #sekunder
+
+    if ammo == 0:
+        reload = 0.9
+        if keys[pygame.K_SPACE]:
+            ammo = ammo + 8
+            text2 = font.render('Reloading....', True, BLACK, WHITE)
+    if reload <= 0:
+        text2 = font.render('Ammo: '+ str(ammo), True, BLACK, WHITE)
+
+            
 
     cherry_speed = -5
     if (random.randint(0, 100) < 2):
-        cherry_y = random.randint(0, 800)
+        cherry_y = random.randint(0, 750)
         cherry_x = 950
         cherries.append([cherry_x, cherry_y, cherry_speed])
+    
+    ammo_speed = -5
+    if (random.randint (0, 250) < 1):
+        ammo_y = random.randint(0,750)
+        ammo_x = 950
+        ammos.append([ammo_x, ammo_y, ammo_speed])
 
     for plum in plums:
         # Move plum
         plum[0] += plum[2]
-    
 
     for cherry in cherries:
         if cherry[0] < 0:
@@ -85,6 +114,14 @@ while not done:
             if collides(plum[0], plum[1], plum_radius, cherry[0], cherry[1], cherry_radius):
                 cherries.remove(cherry)
                 break
+    
+    for ammon in ammos:
+        if ammon[0] < 0:
+            ammos.remove(ammon)
+        ammon[0] += ammon[2]
+        if collides(snake_x, snake_y, snake_radius, ammon[0], ammon[1], ammo_radius):
+            ammos.remove(ammon)
+            ammo += 10
 
     if lives == 0:
         done = True
@@ -97,11 +134,17 @@ while not done:
     for cherry in cherries:
         screen.blit(cherry_image, [cherry[0], cherry[1]])
     screen.blit(text, textRect)
+    screen.blit(text2, textRect2)
+    for ammon in ammos:
+        screen.blit(ammo_image, [ammon[0], ammon[1]])
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
  
     # --- Limit to 60 frames per second
     clock.tick(60)
+    time_to_shoot -= 1.0/60
+    reload -= 1.0/60
+
 done = False
 
 while not done:
