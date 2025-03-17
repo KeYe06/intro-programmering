@@ -1,6 +1,5 @@
 import pygame
 import random
-import time
 
 def collides(obj_1_x, obj_1_y, obj_1_radius, obj_2_x, obj_2_y, obj_2_radius):
     ''' Check if two objects collide. Circular collision detection.
@@ -19,7 +18,7 @@ pygame.init()
 
 size = (1000, 800)
 screen = pygame.display.set_mode(size)
-pygame.display.set_caption("peanits")
+pygame.display.set_caption("space invanders")
 
 lives = 5
 snake_image = pygame.image.load("pygame/snake.png")
@@ -29,7 +28,7 @@ plum_image = pygame.image.load("pygame/plum.png")
 plum_radius = (plum_image.get_width() + plum_image.get_height()) / 4
 plums = []
 
-cherry_image = pygame.image.load("pygame/cherries.png")
+cherry_image = pygame.image.load("pygame/ogre_old.png")
 cherries = []
 cherry_radius = (cherry_image.get_width() + cherry_image.get_height()) / 4
 
@@ -43,20 +42,26 @@ snake_last_direction = "right"
 plum_x = 0
 plum_y = 0
 
+score = 0
+
 font = pygame.font.Font(None, 45)
 text = font.render('Lives: 5',True, BLACK, WHITE)
 text2 = font.render('Ammo: 10', True, BLACK, WHITE)
+text3 = font.render('Score: 0', True, BLACK, WHITE)
 textRect = text.get_rect()
 textRect.center = (1000 // 2, 50)
 textRect2 = text.get_rect()
 textRect2.center = (70, 770)
+textRect3 = text.get_rect()
+textRect3.center = (1000 // 2, 100)
 
 done = False
 clock = pygame.time.Clock()
 
 time_to_shoot = 0
 reload = 0
-ammo = 8
+ammo = 5
+
 
 while not done:
     # --- Main event loop
@@ -81,12 +86,10 @@ while not done:
     if ammo == 0:
         reload = 0.9
         if keys[pygame.K_SPACE]:
-            ammo = ammo + 8
+            ammo = ammo + 5
             text2 = font.render('Reloading....', True, BLACK, WHITE)
     if reload <= 0:
         text2 = font.render('Ammo: '+ str(ammo), True, BLACK, WHITE)
-
-            
 
     cherry_speed = -5
     if (random.randint(0, 100) < 2):
@@ -113,6 +116,8 @@ while not done:
         for plum in plums:
             if collides(plum[0], plum[1], plum_radius, cherry[0], cherry[1], cherry_radius):
                 cherries.remove(cherry)
+                score += 100
+                text3 = font.render('Score: ' + str(score), True, BLACK, WHITE)
                 break
     
     for ammon in ammos:
@@ -135,6 +140,7 @@ while not done:
         screen.blit(cherry_image, [cherry[0], cherry[1]])
     screen.blit(text, textRect)
     screen.blit(text2, textRect2)
+    screen.blit(text3,textRect3)
     for ammon in ammos:
         screen.blit(ammo_image, [ammon[0], ammon[1]])
     # --- Go ahead and update the screen with what we've drawn.

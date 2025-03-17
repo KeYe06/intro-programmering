@@ -1,5 +1,9 @@
 Kevins Loggbok
 ------------
+25-03-17
+
+La till score till projektet. Gick tillbaka till Github uppgifterna. Arbetade uppgift 5.
+------------
 25-03-11
 
 La till så att man har 8 skott innan man behöver ladda om. Begränsade hastigheten som man kan skjuta. La till ammo sak som ger 10 extra skott om man plockar up den.
