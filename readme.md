@@ -1,5 +1,13 @@
 Kevins Loggbok
 -----------------
+25-03-24
+-----------------
+Arbetade lite med uppgift 6. Fastnade lite för att lag inte märkte en bit else kod som låg lite längre ner. Lärde mig inte så mycket nytt. Läste lite på dictionaries. Lite svårt att börja för jag har inte arbetat så mycket med det.
+
+25-03-18
+-----------------
+La in uppgift 6. Uppgift 5 är klar men jag tror inte att jag gjorde uppgiften på det tänkta sättet. Jag började arbeta med att göra spelet svårare ju längre man kommer. Ska börja lägga till dicitonaries för att förenkla saker.
+
 25-03-17
 -----------------
 La till score till projektet. Gick tillbaka till Github uppgifterna. Arbetade uppgift 5.

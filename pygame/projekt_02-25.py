@@ -61,6 +61,9 @@ clock = pygame.time.Clock()
 time_to_shoot = 0
 reload = 0
 ammo = 5
+switch = 3
+switch2 = 3
+stage1 = 20
 
 
 while not done:
@@ -83,6 +86,11 @@ while not done:
         text2 = font.render('Ammo: '+ str(ammo), True, BLACK, WHITE)
         time_to_shoot = 0.18 #sekunder
 
+    if snake_y < 0:
+        snake_y = 0
+    if snake_y > 750:
+        snake_y = 750
+
     if ammo == 0:
         reload = 0.9
         if keys[pygame.K_SPACE]:
@@ -91,11 +99,28 @@ while not done:
     if reload <= 0:
         text2 = font.render('Ammo: '+ str(ammo), True, BLACK, WHITE)
 
-    cherry_speed = -5
-    if (random.randint(0, 100) < 2):
-        cherry_y = random.randint(0, 750)
-        cherry_x = 950
-        cherries.append([cherry_x, cherry_y, cherry_speed])
+    if stage1 > 0:
+        cherry_speed = -5
+        if (random.randint(0, 130) < 2):
+                cherry_y = random.randint(0, 750)
+                cherry_x = 950
+                cherries.append([cherry_x, cherry_y, cherry_speed])
+
+    if stage1 <= 0:
+        cherry_speed = -7
+        switch = 2
+        if switch > 0:
+            switch2 = 2
+            cherry_y += 5
+        elif switch2 > 0:
+            switch2 = 1
+            cherry_y += -5
+        if (random.randint(0, 110) < 2):
+                cherry_y = random.randint(0, 750)
+                cherry_x = 950
+                cherries.append([cherry_x, cherry_y, cherry_speed])
+
+                #SKAPA DICTIONARIES
     
     ammo_speed = -5
     if (random.randint (0, 250) < 1):
@@ -150,6 +175,8 @@ while not done:
     clock.tick(60)
     time_to_shoot -= 1.0/60
     reload -= 1.0/60
+    stage1 -= 1.0/60
+    switch -= 1.0/60
 
 done = False
 
