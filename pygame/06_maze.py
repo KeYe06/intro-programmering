@@ -34,21 +34,42 @@ def get_one_colliding_object(object_1, objects):
             return object_2
     return None
 
+def collides(obj_1_x, obj_1_y, obj_1_radius, obj_2_x, obj_2_y, obj_2_radius):
+    ''' Check if two objects collide. Circular collision detection.
+    '''
+    distance_squared = ((obj_1_x - obj_2_x) ** 2 + (obj_1_y - obj_2_y) ** 2)
+    return distance_squared < (obj_1_radius + obj_2_radius) ** 2
+
 # --- Initialize Pygame
 pygame.init()
 
 # --- Add elements to the game.
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
 # load graphics
 sand_image = pygame.image.load("pygame/floor_sand_stone_0.png")
 wall_image = pygame.image.load("pygame/brick_brown_0.png")
 #door "img/open_door.png"
 player_image = pygame.image.load("pygame/deep_elf_knight_old.png")
-
+player_radius = (player_image.get_width() + player_image.get_height()) / 4
+pickup_image = pygame.image.load("pygame/crystal_wall_lightmagenta.png")
+pickup_radius = (pickup_image.get_width() + pickup_image.get_height()) / 4
 # Add visual elements to the game
+
+enemy_image = pygame.image.load("pygame/ogre_old.png")
 
 wall_size = wall_image.get_width()
 walls = []
 
+pickups = []
+
+font = pygame.font.Font(None, 32)
+text = font.render('score: 0',True, WHITE)
+textRect = text.get_rect()
+textRect.center = (450 // 2, 20)
+textRect2 = text.get_rect()
+textRect2.center = (450 // 2, 450 // 2)
+score = 0
 # Create the player
 player = {}
 player['image'] = player_image
@@ -74,6 +95,12 @@ while len(line) > 1:
         elif char == 'e':
             player['x'] = x
             player['y'] = y
+        elif char == 'p':
+            pickup = {}
+            pickup['x'] = x
+            pickup['y'] = y
+            pickup['image'] = pickup_image
+            pickups.append(pickup)
 
         x += wall_size
     x = 0
@@ -120,6 +147,15 @@ while is_running:
         # snap player to grid
         player['x'] = round(player['x'] / wall_size) * wall_size
         player['y'] = round(player['y'] / wall_size) * wall_size
+    
+    for pickup in pickups:
+        if collides(player['x'], player['y'], player_radius, pickup['x'], pickup['y'], pickup_radius):
+            pickups.remove(pickup)
+            score = score + 1
+            text = font.render('score: '+ str(score),True, WHITE)
+    
+    if score == 5:
+        text2 = ('YOU WON!', True, WHITE)
 
     # --- Screen-clearing code goes here
     # fill with sand
@@ -129,7 +165,15 @@ while is_running:
     # --- Drawing code should go here
     for wall in walls:
         screen.blit(wall_image, (wall['x'], wall['y']))
+
     screen.blit(player_image, (player['x'], player['y']))
+
+    screen.blit(enemy_image, enemy(['x'], enemy['y']))
+
+    for pickup in pickups:
+        screen.blit(pickup_image, (pickup['x'], pickup['y']))
+
+    screen.blit(text, textRect)
 
     pygame.display.update()  # or pygame.display.flip()
     # --- Increase game time

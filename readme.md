@@ -1,5 +1,7 @@
 Kevins Loggbok
 -----------------
+Arbetade mer med uppgift 6. Inte så mycket nytt men uppgiften innehåller dictionaries så det är nog nytt att arbeta lite med det. La till de lila blocken som man ska plocka upp collision och scorebord funkar. Ska lägga till fiender nästa lektion. Pillade inte på projektet. 
+
 25-03-24
 -----------------
 Arbetade lite med uppgift 6. Fastnade lite för att lag inte märkte en bit else kod som låg lite längre ner. Lärde mig inte så mycket nytt. Läste lite på dictionaries. Lite svårt att börja för jag har inte arbetat så mycket med det.
