@@ -1,4 +1,10 @@
 Kevins Loggbok
+
+25-03-31
+-----------------
+Arbetade mer med uppgfit 6. La till dörrar och fiender. Fiender kan bara röra sig fram och tillbaka i x-led på ett väldigt jittrigt sätt. Ska fixa det nästa lektion.
+
+25-03-25
 -----------------
 Arbetade mer med uppgift 6. Inte så mycket nytt men uppgiften innehåller dictionaries så det är nog nytt att arbeta lite med det. La till de lila blocken som man ska plocka upp collision och scorebord funkar. Ska lägga till fiender nästa lektion. Pillade inte på projektet. 
 

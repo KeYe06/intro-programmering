@@ -20,7 +20,7 @@ Extra tasks:
 2. If the player enters a door, the player is teleported to another door.
 '''
 import pygame
-
+import random
 
 # --- Define helper functions
 def get_one_colliding_object(object_1, objects):
@@ -57,11 +57,19 @@ pickup_radius = (pickup_image.get_width() + pickup_image.get_height()) / 4
 # Add visual elements to the game
 
 enemy_image = pygame.image.load("pygame/ogre_old.png")
+enemy_radius = (enemy_image.get_width() + enemy_image.get_height()) / 4
+
+door_image = pygame.image.load("pygame/open_door.png")
+door_radius = (door_image.get_width() + door_image.get_height()) / 4
+
+doors = []
 
 wall_size = wall_image.get_width()
 walls = []
 
 pickups = []
+
+enemies = []
 
 font = pygame.font.Font(None, 32)
 text = font.render('score: 0',True, WHITE)
@@ -75,6 +83,7 @@ player = {}
 player['image'] = player_image
 player['speed'] = 4
 
+
 # Read the maze from the file.
 
 file = open('pygame/maze.txt', 'r')
@@ -86,7 +95,7 @@ y = 0
 while len(line) > 1:
     maze_height += 1
     for char in line:
-        if char == 'x' or char == 'd':
+        if char == 'x':
             wall = {}
             wall['x'] = x
             wall['y'] = y
@@ -101,6 +110,19 @@ while len(line) > 1:
             pickup['y'] = y
             pickup['image'] = pickup_image
             pickups.append(pickup)
+        elif char == 'f':
+            enemy = {}
+            enemy['image'] = enemy_image
+            enemy['speed'] = 4
+            enemy['x'] = x
+            enemy['y'] = y
+            enemies.append(enemy)
+        elif char == 'd':
+            door = {}
+            door['x'] = x
+            door['y'] = y
+            door['image'] = door_image
+            doors.append(door)
 
         x += wall_size
     x = 0
@@ -108,6 +130,9 @@ while len(line) > 1:
     line = file.readline()
 
 file.close()
+
+cd = 2
+cd2 = 2
 
 # --- Set the width and height of the screen [width, height]
 size = (maze_width * wall_size, maze_height * wall_size)
@@ -153,7 +178,19 @@ while is_running:
             pickups.remove(pickup)
             score = score + 1
             text = font.render('score: '+ str(score),True, WHITE)
-    
+
+    switch = random.randint(0, 100)
+
+    for enemy in enemies:
+        if switch <= 50:
+            enemy['x'] += enemy['speed']
+            if get_one_colliding_object(enemy, walls):
+                enemy['x'] -= enemy['speed']
+        elif switch >= 50:
+            enemy ['x'] -= enemy['speed']
+            if get_one_colliding_object(enemy, walls):
+                enemy['x'] += enemy['speed']   
+
     if score == 5:
         text2 = ('YOU WON!', True, WHITE)
 
@@ -168,16 +205,21 @@ while is_running:
 
     screen.blit(player_image, (player['x'], player['y']))
 
-    screen.blit(enemy_image, enemy(['x'], enemy['y']))
+    for enemy in enemies:
+        screen.blit(enemy_image, (enemy['x'], enemy['y']))
 
     for pickup in pickups:
         screen.blit(pickup_image, (pickup['x'], pickup['y']))
+    
+    for door in doors:
+        screen.blit(door_image, (door['x'], door['y']))
 
     screen.blit(text, textRect)
 
     pygame.display.update()  # or pygame.display.flip()
     # --- Increase game time
     clock.tick(60)  # 60 frames per second
-
+    cd -= 1.0/60
+    cd2 -= 1.0/60
 # Clean up when the game exits.
 pygame.quit()
