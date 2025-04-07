@@ -1,5 +1,9 @@
 Kevins Loggbok
 
+25-04-07
+-----------------
+Arbetade vidare på uppgift 6. Klar med allt förutom fiendernas rörelse. Nu kan de röra sig slumpmässigt åt alla håll men jag har fortfarande inte fixat så att de håller riktningen i en mindre period så de jittrar fortfarande. Jag har lärt mig ett nytt sätt att skriva saker med hjälp av randint. 
+
 25-03-31
 -----------------
 Arbetade mer med uppgfit 6. La till dörrar och fiender. Fiender kan bara röra sig fram och tillbaka i x-led på ett väldigt jittrigt sätt. Ska fixa det nästa lektion.

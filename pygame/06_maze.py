@@ -76,7 +76,9 @@ text = font.render('score: 0',True, WHITE)
 textRect = text.get_rect()
 textRect.center = (450 // 2, 20)
 textRect2 = text.get_rect()
-textRect2.center = (450 // 2, 450 // 2)
+textRect2.center = (400 // 2, 400 // 2)
+text2 = font.render('', True, WHITE)
+text3 = font.render('', True, WHITE)
 score = 0
 # Create the player
 player = {}
@@ -143,12 +145,12 @@ pygame.display.set_caption("Maze Game")
 # --- Game time
 clock = pygame.time.Clock()
 # -------- Main Program Loop -----------
-is_running = True
-while is_running:
+done = False
+while not done:
     # --- Event loop
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            is_running = False
+            done = True
     # --- Game logic should go here
     # --- Move the player
     keys = pygame.key.get_pressed()
@@ -178,21 +180,48 @@ while is_running:
             pickups.remove(pickup)
             score = score + 1
             text = font.render('score: '+ str(score),True, WHITE)
-
-    switch = random.randint(0, 100)
-
+    
+    for door in doors:
+        if collides(player['x'], player['y'], player_radius, door['x'], door['y'], door_radius):
+            chance = random.randint(0,3)
+            if chance == 1:
+                player['x'] = 30
+                player['y'] = 20
+            if chance == 2:
+                player['x'] = 160
+                player['y'] = 180
+            if chance == 3:
+                player['x'] = 320
+                player['y'] = 320
+    switch = 2
     for enemy in enemies:
-        if switch <= 50:
+        if collides(player['x'], player['y'], player_radius, enemy['x'], enemy['y'], enemy_radius):
+            done = True
+            text3 = font.render('You lose!', True, WHITE)
+        direction = random.randint(0,4)
+        if switch <= 0:
+            switch = 100
+            direction = random.randint(0,4)
+        if direction == 1:
             enemy['x'] += enemy['speed']
             if get_one_colliding_object(enemy, walls):
                 enemy['x'] -= enemy['speed']
-        elif switch >= 50:
-            enemy ['x'] -= enemy['speed']
+        elif direction == 2:
+            enemy['x'] -= enemy['speed']
             if get_one_colliding_object(enemy, walls):
-                enemy['x'] += enemy['speed']   
+                enemy['x'] += enemy['speed']
+        elif direction == 3:
+            enemy['y'] += enemy['speed']
+            if get_one_colliding_object(enemy, walls):
+                enemy['y'] -= enemy['speed']
+        elif direction == 4:
+            enemy['y'] -= enemy['speed']
+            if get_one_colliding_object(enemy, walls):
+                enemy['y'] += enemy['speed']
 
-    if score == 5:
-        text2 = ('YOU WON!', True, WHITE)
+    if score == 6:
+        text2 = font.render('YOU WON!', True, WHITE)
+        done = True
 
     # --- Screen-clearing code goes here
     # fill with sand
@@ -215,11 +244,20 @@ while is_running:
         screen.blit(door_image, (door['x'], door['y']))
 
     screen.blit(text, textRect)
+    screen.blit(text2, textRect2)
+    screen.blit(text3, textRect2)
 
     pygame.display.update()  # or pygame.display.flip()
     # --- Increase game time
     clock.tick(60)  # 60 frames per second
-    cd -= 1.0/60
-    cd2 -= 1.0/60
+    switch -= 1.0/60
 # Clean up when the game exits.
+done = False
+
+while not done:
+    # --- Main event loop
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            done = True
+
 pygame.quit()
