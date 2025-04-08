@@ -225,7 +225,7 @@ while not done:
             enemy['x'] = round(enemy['x'] / wall_size) * wall_size
             enemy['y'] = round(enemy['y'] / wall_size) * wall_size
         enemy['switch'] -= 0.2
-    if score == 6:
+    if score == 9:
         text2 = font.render('YOU WON!', True, WHITE)
         done = True
 
