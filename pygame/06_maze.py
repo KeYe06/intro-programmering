@@ -119,6 +119,7 @@ while len(line) > 1:
             enemy['x'] = x
             enemy['y'] = y
             enemy['direction'] = 1
+            enemy['switch'] = 3
             enemies.append(enemy)
         elif char == 'd':
             door = {}
@@ -201,26 +202,29 @@ while not done:
         if collides(player['x'], player['y'], player_radius, enemy['x'], enemy['y'], enemy_radius):
             done = True
             text3 = font.render('You lose!', True, WHITE)
-        if switch <= 0:
-            direction = random.randint(0,4)
-            switch = random.randint(0,4)
-        if direction == 1 and switch >= 0:
+        if enemy['switch'] <= 0:
+            enemy['direction'] = random.randint(0,4)
+            enemy['switch'] = random.randint(0,4)
+        if enemy['direction'] == 1:
             enemy['x'] += enemy['speed']
-            if get_one_colliding_object(enemy, walls):
+            if get_one_colliding_object(enemy, walls) or get_one_colliding_object(enemy, doors):
                 enemy['x'] -= enemy['speed']
-        elif direction == 2 and switch >= 0:
+        elif enemy['direction'] == 2:
             enemy['x'] -= enemy['speed']
-            if get_one_colliding_object(enemy, walls):
+            if get_one_colliding_object(enemy, walls) or get_one_colliding_object(enemy, doors):
                 enemy['x'] += enemy['speed']
-        elif direction == 3 and switch >= 0:
+        elif enemy['direction'] == 3:
             enemy['y'] += enemy['speed']
-            if get_one_colliding_object(enemy, walls):
+            if get_one_colliding_object(enemy, walls) or get_one_colliding_object(enemy, doors):
                 enemy['y'] -= enemy['speed']
-        elif direction == 4 and switch >= 0:
+        elif enemy['direction'] == 4:
             enemy['y'] -= enemy['speed']
-            if get_one_colliding_object(enemy, walls):
+            if get_one_colliding_object(enemy, walls) or get_one_colliding_object(enemy, doors):
                 enemy['y'] += enemy['speed']
-
+        else:
+            enemy['x'] = round(enemy['x'] / wall_size) * wall_size
+            enemy['y'] = round(enemy['y'] / wall_size) * wall_size
+        enemy['switch'] -= 0.2
     if score == 6:
         text2 = font.render('YOU WON!', True, WHITE)
         done = True
@@ -252,7 +256,7 @@ while not done:
     pygame.display.update()  # or pygame.display.flip()
     # --- Increase game time
     clock.tick(60)  # 60 frames per second
-    switch -= 0.2
+    
 # Clean up when the game exits.
 done = False
 
