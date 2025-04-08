@@ -1,5 +1,9 @@
 Kevins Loggbok
 
+25-04-08
+-----------------
+Arbetade vidare på uppgift 6. Fixade till fiende rörelserna. Lärde mig lite mer om hur man använde dictionaries och använde det för enemy direction och switch som bestämmer fiendens riktning och flytt intervaller. Typ klar med uppgift 6 men borde nog fixa koden för dörrarna eftersom de inte funkar så bra
+
 25-04-07
 -----------------
 Arbetade vidare på uppgift 6. Klar med allt förutom fiendernas rörelse. Nu kan de röra sig slumpmässigt åt alla håll men jag har fortfarande inte fixat så att de håller riktningen i en mindre period så de jittrar fortfarande. Jag har lärt mig ett nytt sätt att skriva saker med hjälp av randint. 

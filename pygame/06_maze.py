@@ -204,7 +204,7 @@ while not done:
             text3 = font.render('You lose!', True, WHITE)
         if enemy['switch'] <= 0:
             enemy['direction'] = random.randint(0,4)
-            enemy['switch'] = random.randint(0,4)
+            enemy['switch'] = random.randint(2,6)
         if enemy['direction'] == 1:
             enemy['x'] += enemy['speed']
             if get_one_colliding_object(enemy, walls) or get_one_colliding_object(enemy, doors):
