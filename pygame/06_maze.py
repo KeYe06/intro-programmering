@@ -118,6 +118,7 @@ while len(line) > 1:
             enemy['speed'] = 4
             enemy['x'] = x
             enemy['y'] = y
+            enemy['direction'] = 1
             enemies.append(enemy)
         elif char == 'd':
             door = {}
@@ -145,6 +146,8 @@ pygame.display.set_caption("Maze Game")
 # --- Game time
 clock = pygame.time.Clock()
 # -------- Main Program Loop -----------
+switch = 1
+direction = 1
 done = False
 while not done:
     # --- Event loop
@@ -193,28 +196,27 @@ while not done:
             if chance == 3:
                 player['x'] = 320
                 player['y'] = 320
-    switch = 2
+    
     for enemy in enemies:
         if collides(player['x'], player['y'], player_radius, enemy['x'], enemy['y'], enemy_radius):
             done = True
             text3 = font.render('You lose!', True, WHITE)
-        direction = random.randint(0,4)
         if switch <= 0:
-            switch = 100
             direction = random.randint(0,4)
-        if direction == 1:
+            switch = random.randint(0,4)
+        if direction == 1 and switch >= 0:
             enemy['x'] += enemy['speed']
             if get_one_colliding_object(enemy, walls):
                 enemy['x'] -= enemy['speed']
-        elif direction == 2:
+        elif direction == 2 and switch >= 0:
             enemy['x'] -= enemy['speed']
             if get_one_colliding_object(enemy, walls):
                 enemy['x'] += enemy['speed']
-        elif direction == 3:
+        elif direction == 3 and switch >= 0:
             enemy['y'] += enemy['speed']
             if get_one_colliding_object(enemy, walls):
                 enemy['y'] -= enemy['speed']
-        elif direction == 4:
+        elif direction == 4 and switch >= 0:
             enemy['y'] -= enemy['speed']
             if get_one_colliding_object(enemy, walls):
                 enemy['y'] += enemy['speed']
@@ -250,7 +252,7 @@ while not done:
     pygame.display.update()  # or pygame.display.flip()
     # --- Increase game time
     clock.tick(60)  # 60 frames per second
-    switch -= 1.0/60
+    switch -= 0.2
 # Clean up when the game exits.
 done = False
 
