@@ -1,5 +1,9 @@
 Kevins Loggbok
 
+25-04-22
+-----------------
+Mer arbete på uppgift 6 finslipning och sådant. La till en timer på dörrarna så man kan bara passera efter nån sekunds väntan. Inte så mycket gjort idag. Om jag känner för det så är jag nog klar med uppgift 6, men det finns alltid mer att fixa. Ska nog koda in så att man inte kan komma ut ur samma dörr som man gick in i.
+
 25-04-08
 -----------------
 Arbetade vidare på uppgift 6. Fixade till fiende rörelserna. Lärde mig lite mer om hur man använde dictionaries och använde det för enemy direction och switch som bestämmer fiendens riktning och flytt intervaller. Typ klar med uppgift 6 men borde nog fixa koden för dörrarna eftersom de inte funkar så bra

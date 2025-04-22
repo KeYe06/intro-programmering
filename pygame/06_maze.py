@@ -206,7 +206,9 @@ while not done:
                     player['y'] += player['speed']
 
     for enemy in enemies:
-
+        if collides(player['x'], player['y'], player_radius, enemy['x'], enemy['y'], enemy_radius):
+            done = True
+            text3 = font.render('You lose!', True, WHITE)
         if enemy['switch'] <= 0:
             enemy['direction'] = random.randint(0,4)
             enemy['switch'] = random.randint(2,6)
@@ -262,7 +264,6 @@ while not done:
     # --- Increase game time
     clock.tick(60)  # 60 frames per second
     cd -= 1.0/60.0
-    
 # Clean up when the game exits.
 done = False
 
