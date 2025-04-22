@@ -135,8 +135,7 @@ while len(line) > 1:
 
 file.close()
 
-cd = 2
-cd2 = 2
+cd = 1
 
 # --- Set the width and height of the screen [width, height]
 size = (maze_width * wall_size, maze_height * wall_size)
@@ -188,20 +187,26 @@ while not done:
     for door in doors:
         if collides(player['x'], player['y'], player_radius, door['x'], door['y'], door_radius):
             chance = random.randint(0,3)
-            if chance == 1:
+            if chance == 1 and cd <= 0:
+                cd = 2
                 player['x'] = 30
                 player['y'] = 20
-            if chance == 2:
+            elif chance == 2 and cd <= 0:
+                cd = 2
                 player['x'] = 160
                 player['y'] = 180
-            if chance == 3:
+            elif chance == 3 and cd <= 0:
+                cd = 2
                 player['x'] = 320
                 player['y'] = 320
-    
+            elif cd >= 0:
+                if keys[pygame.K_LEFT] and get_one_colliding_object(player, doors):
+                    player['x'] += player['speed']
+                elif keys[pygame.K_UP] and get_one_colliding_object(player, doors):
+                    player['y'] += player['speed']
+
     for enemy in enemies:
-        if collides(player['x'], player['y'], player_radius, enemy['x'], enemy['y'], enemy_radius):
-            done = True
-            text3 = font.render('You lose!', True, WHITE)
+
         if enemy['switch'] <= 0:
             enemy['direction'] = random.randint(0,4)
             enemy['switch'] = random.randint(2,6)
@@ -256,6 +261,7 @@ while not done:
     pygame.display.update()  # or pygame.display.flip()
     # --- Increase game time
     clock.tick(60)  # 60 frames per second
+    cd -= 1.0/60.0
     
 # Clean up when the game exits.
 done = False
