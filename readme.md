@@ -1,5 +1,9 @@
 Kevins Loggbok
 
+25-04-28
+-----------------
+Klar med uppgift 6. Dörrarna är fixade nu och man kan inte komma ut ur samma dörr som man går in i. Finns inte direkt något kvar för mig att pilla på i uppgift 6 om jag inte vill fixa alla små fel. Lärde mig inte direkt något nytt.
+
 25-04-22
 -----------------
 Mer arbete på uppgift 6 finslipning och sådant. La till en timer på dörrarna så man kan bara passera efter nån sekunds väntan. Inte så mycket gjort idag. Om jag känner för det så är jag nog klar med uppgift 6, men det finns alltid mer att fixa. Ska nog koda in så att man inte kan komma ut ur samma dörr som man gick in i.
