@@ -71,6 +71,8 @@ pickups = []
 
 enemies = []
 
+last_door = -1
+
 font = pygame.font.Font(None, 32)
 text = font.render('score: 0',True, WHITE)
 textRect = text.get_rect()
@@ -187,18 +189,23 @@ while not done:
     for door in doors:
         if collides(player['x'], player['y'], player_radius, door['x'], door['y'], door_radius):
             chance = random.randint(0,3)
-            if chance == 1 and cd <= 0:
-                cd = 2
+            if chance == 1 and last_door != chance and cd <= 0:
+                cd = 1
+                last_door = 1
                 player['x'] = 30
                 player['y'] = 20
-            elif chance == 2 and cd <= 0:
-                cd = 2
+            elif chance == 2 and last_door != chance and cd <= 0:
+                cd = 1
+                last_door = 2
                 player['x'] = 160
                 player['y'] = 180
-            elif chance == 3 and cd <= 0:
-                cd = 2
+            elif chance == 3 and last_door != chance and cd <= 0:
+                cd = 1
+                last_door = 3
                 player['x'] = 320
                 player['y'] = 320
+            elif chance == last_door and cd <= 0:
+                chance = random.randint(0,3)
             elif cd >= 0:
                 if keys[pygame.K_LEFT] and get_one_colliding_object(player, doors):
                     player['x'] += player['speed']
@@ -206,9 +213,7 @@ while not done:
                     player['y'] += player['speed']
 
     for enemy in enemies:
-        if collides(player['x'], player['y'], player_radius, enemy['x'], enemy['y'], enemy_radius):
-            done = True
-            text3 = font.render('You lose!', True, WHITE)
+
         if enemy['switch'] <= 0:
             enemy['direction'] = random.randint(0,4)
             enemy['switch'] = random.randint(2,6)
