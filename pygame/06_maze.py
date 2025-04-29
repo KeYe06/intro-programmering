@@ -46,42 +46,42 @@ pygame.init()
 # --- Add elements to the game.
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
+
 # load graphics
 sand_image = pygame.image.load("pygame/floor_sand_stone_0.png")
 wall_image = pygame.image.load("pygame/brick_brown_0.png")
+
 #door "img/open_door.png"
 player_image = pygame.image.load("pygame/deep_elf_knight_old.png")
 player_radius = (player_image.get_width() + player_image.get_height()) / 4
 pickup_image = pygame.image.load("pygame/crystal_wall_lightmagenta.png")
 pickup_radius = (pickup_image.get_width() + pickup_image.get_height()) / 4
-# Add visual elements to the game
 
+# Add visual elements to the game
 enemy_image = pygame.image.load("pygame/ogre_old.png")
 enemy_radius = (enemy_image.get_width() + enemy_image.get_height()) / 4
+enemies = []
 
 door_image = pygame.image.load("pygame/open_door.png")
 door_radius = (door_image.get_width() + door_image.get_height()) / 4
-
 doors = []
+last_door = -1
 
 wall_size = wall_image.get_width()
 walls = []
 
 pickups = []
 
-enemies = []
-
-last_door = -1
-
 font = pygame.font.Font(None, 32)
 text = font.render('score: 0',True, WHITE)
 textRect = text.get_rect()
-textRect.center = (450 // 2, 20)
+textRect.center = (115, 17)
 textRect2 = text.get_rect()
-textRect2.center = (400 // 2, 400 // 2)
+textRect2.center = (400 // 2, 210)
 text2 = font.render('', True, WHITE)
 text3 = font.render('', True, WHITE)
 score = 0
+
 # Create the player
 player = {}
 player['image'] = player_image
@@ -89,7 +89,6 @@ player['speed'] = 4
 
 
 # Read the maze from the file.
-
 file = open('pygame/maze.txt', 'r')
 line = file.readline()
 maze_width = len(line) - 1  # Do not count the newline character.
@@ -117,7 +116,7 @@ while len(line) > 1:
         elif char == 'f':
             enemy = {}
             enemy['image'] = enemy_image
-            enemy['speed'] = 4
+            enemy['speed'] = 2
             enemy['x'] = x
             enemy['y'] = y
             enemy['direction'] = 1
@@ -129,15 +128,12 @@ while len(line) > 1:
             door['y'] = y
             door['image'] = door_image
             doors.append(door)
-
         x += wall_size
     x = 0
     y += wall_size
     line = file.readline()
 
 file.close()
-
-cd = 1
 
 # --- Set the width and height of the screen [width, height]
 size = (maze_width * wall_size, maze_height * wall_size)
@@ -147,7 +143,9 @@ pygame.display.set_caption("Maze Game")
 
 # --- Game time
 clock = pygame.time.Clock()
+
 # -------- Main Program Loop -----------
+cd = 1
 switch = 1
 direction = 1
 done = False
@@ -180,12 +178,14 @@ while not done:
         player['x'] = round(player['x'] / wall_size) * wall_size
         player['y'] = round(player['y'] / wall_size) * wall_size
     
+    # --- pickups code
     for pickup in pickups:
         if collides(player['x'], player['y'], player_radius, pickup['x'], pickup['y'], pickup_radius):
             pickups.remove(pickup)
             score = score + 1
             text = font.render('score: '+ str(score),True, WHITE)
     
+    # --- door code (randomisation)
     for door in doors:
         if collides(player['x'], player['y'], player_radius, door['x'], door['y'], door_radius):
             chance = random.randint(0,3)
@@ -212,7 +212,9 @@ while not done:
                 elif keys[pygame.K_UP] and get_one_colliding_object(player, doors):
                     player['y'] += player['speed']
 
+    # --- enemy code
     for enemy in enemies:
+        # lose condition
         if collides(player['x'], player['y'], player_radius, enemy['x'], enemy['y'], enemy_radius):
             done = True
             text3 = font.render('You lose!', True, WHITE)
@@ -236,9 +238,12 @@ while not done:
             if get_one_colliding_object(enemy, walls) or get_one_colliding_object(enemy, doors):
                 enemy['y'] += enemy['speed']
         else:
+            # snap enemy to grid
             enemy['x'] = round(enemy['x'] / wall_size) * wall_size
             enemy['y'] = round(enemy['y'] / wall_size) * wall_size
         enemy['switch'] -= 0.2
+
+    # --- win condition
     if score == 9:
         text2 = font.render('YOU WON!', True, WHITE)
         done = True
@@ -252,8 +257,6 @@ while not done:
     for wall in walls:
         screen.blit(wall_image, (wall['x'], wall['y']))
 
-    screen.blit(player_image, (player['x'], player['y']))
-
     for enemy in enemies:
         screen.blit(enemy_image, (enemy['x'], enemy['y']))
 
@@ -262,6 +265,8 @@ while not done:
     
     for door in doors:
         screen.blit(door_image, (door['x'], door['y']))
+
+    screen.blit(player_image, (player['x'], player['y']))
 
     screen.blit(text, textRect)
     screen.blit(text2, textRect2)
