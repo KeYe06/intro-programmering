@@ -1,5 +1,9 @@
 Kevins Loggbok
 
+25-04-29
+-----------------
+Gjorde inte så mycket. Fixade lite struktur i uppgift 6 så allt ser lite finare. Flyttade också lite på texterna i spelet så de är på bättre platser nu. Minskade fiendernas hastighet från 4 till 2. Spelet är lättare nu pga detta. Tänkte mycket på vad jag ska arbeta med nu.
+
 25-04-28
 -----------------
 Klar med uppgift 6. Dörrarna är fixade nu och man kan inte komma ut ur samma dörr som man går in i. Finns inte direkt något kvar för mig att pilla på i uppgift 6 om jag inte vill fixa alla små fel. Lärde mig inte direkt något nytt.
